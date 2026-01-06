@@ -2,6 +2,8 @@ const express = require('express')
 const { connectDB } = require('./db/dbcomfig')
 const app = express()
 const port = 5000
+const userroutes = require('./ROUTES/userroute')
+// const sequelize = require("../db/dbcomfig"); // आफ्नो db file path अनुसार
 
 
 app.use(express.json())
@@ -9,22 +11,9 @@ app.use(express.json())
 connectDB()
 
 
-// console.log(process.env.DATABASE_URL)
 
-// app.get('/',(req, res) => {
-//     // console.log("this is home page ");
-//     res.status(400).json({
-//         massage: "process.env.DATABASE_URL"
-//     })
-    
-// })
-// app.post('/hello', (req, res) => {
-//     console.log(req.body);
-
-//     res.send(" post api secussfully ")
-
-// })
-
+app.use('/api/user',userroutes)
+// sequelize.authenticate()
 
 app.listen(port, () => {
     console.log(`Sever is runing  port  ${port}`)
