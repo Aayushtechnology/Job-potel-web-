@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 // const { Sequelize } = require("sequelize");
 
-const sequelize = require("../db/dbcomfig"); 
+const {sequelize} = require("../db/dbcomfig"); 
 
 // console.log(typeof sequelize);
 
