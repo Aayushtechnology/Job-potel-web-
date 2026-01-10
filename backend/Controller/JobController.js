@@ -2,12 +2,13 @@ const { Job, User } = require("../Model/index")
 // const { Op } = require("sequelize");
 
 const createjob = async (req, res) => {
+    // get data from req.body
     const { title, description, location, salary, company } = req.body;
 
     if (!title || !description || !location || !company) {
         return res.status(400).json({ message: "Please provide all required fields" })
     }
-
+/// create 
     const job = await Job.create({
         title,
         description,
@@ -21,8 +22,10 @@ const createjob = async (req, res) => {
 
 // get a jobs
 const getjobs = async (req, res) => {
-//
+
+    // fetch jobs from db
     const jobs = await Job.findAll({
+        // include user details
         include: {
             model: User,
             attributes: ["id", "username", "userEmail"]
@@ -39,6 +42,8 @@ const getjobs = async (req, res) => {
 
 const getsinglejob = async (req, res) => {
     // get id from req.params
+    // what is req.params?
+    // It is used to get the dynamic value from the url
     const id = req.params.id
     if (!id) {
         return res.status(400).json({
