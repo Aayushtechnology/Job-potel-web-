@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 const {sequelize} = require("../db/dbcomfig");
 
-
+// define is method 
 const Job = sequelize.define("Job",{
     id: {
         type: DataTypes.UUID,
@@ -34,7 +34,7 @@ const Job = sequelize.define("Job",{
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: "Users",
+            model: "users",
             key: "id"
         }
     },
@@ -46,3 +46,4 @@ const Job = sequelize.define("Job",{
 })
 
 module.exports = Job;
+console.log("job model loaded");

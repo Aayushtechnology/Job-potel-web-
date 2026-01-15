@@ -1,13 +1,17 @@
-const { Where } = require("sequelize/lib/utils");
+const { Where} = require("sequelize/lib/utils");
 const User = require("../Model/UserModel")
 const bcrypt = require("bcrypt");
 
+// register 
 const registerUser = async (req, res) => {
-    const { username, password, email, role } = req.body;
 
+    // body
+    const { username, password, email, role } = req.body;
+console.log(req.body)
     if (!username || !password || !email || !role) {
         return res.status(400).json({ message: 'All fields are required' });
     }
+    
 
 // check if user already exists
     const userExists = await User.findOne({ where: { email } });
@@ -15,9 +19,9 @@ const registerUser = async (req, res) => {
         return res.status(409).json
             ({ message: 'Email already in use' });
     }
-
+// password hash 
     const hashedPassword = await bcrypt.hash(password, 10);
-
+// create a User 
     const user = await User.create({
         username,
         password: hashedPassword,
@@ -27,13 +31,13 @@ const registerUser = async (req, res) => {
 
     // Proceed with user registration logic (e.g., save to database)
     res.status(201).json({ message: 'User registered successfully' });
+
+    
 }
 
 // login user api 
 const loginuser = async (req, res) => {
     const { email, password } = req.body
-
-
     // console.log(req.body)
     if (!email || !password) {
         return res.status(400).json({ message: "Please provide email and password" })

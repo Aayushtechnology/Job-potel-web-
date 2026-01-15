@@ -1,10 +1,10 @@
-const { Job, User } = require("../Model/index")
-// const { Op } = require("sequelize");
-
+const { Job, User } = require("../Model/index");
+console.log("job controller loaded");
 const createjob = async (req, res) => {
     // get data from req.body
+    console.log(" api hit");
     const { title, description, location, salary, company } = req.body;
-
+console.log(req.body)
     if (!title || !description || !location || !company) {
         return res.status(400).json({ message: "Please provide all required fields" })
     }
@@ -133,5 +133,5 @@ const deleteJobById = async (req, res) => {
 }
 
 
-
-module.exports = { createjob, getjobs, getsinglejob, updateJobById, deleteJobById }
+// exports 
+module.exports = { createjob, getjobs, getsinglejob, updateJobById,deleteJobById }

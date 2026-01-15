@@ -1,9 +1,8 @@
 const { DataTypes } = require("sequelize");
-// const { Sequelize } = require("sequelize");
 
 const {sequelize} = require("../db/dbcomfig"); 
 
-// console.log(typeof sequelize);
+
 
 const User = sequelize.define("User", {
     id: {
@@ -32,10 +31,11 @@ const User = sequelize.define("User", {
         allowNull: false,
         enum :['jobseeker','jobprovider'],
     }
-},
-    {
+}, {
         timestamps: true,
         underscored: true,
-        tableName: 'users',
+       tableName: 'users', // 👈 important
+          
     },);
+
 module.exports = User;
