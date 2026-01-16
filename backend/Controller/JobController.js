@@ -4,11 +4,14 @@ const createjob = async (req, res) => {
     // get data from req.body
     console.log(" api hit");
     const { title, description, location, salary, company } = req.body;
-console.log(req.body)
+
+
+
     if (!title || !description || !location || !company) {
         return res.status(400).json({ message: "Please provide all required fields" })
     }
-/// create 
+
+    //create 
     const job = await Job.create({
         title,
         description,
@@ -134,4 +137,4 @@ const deleteJobById = async (req, res) => {
 
 
 // exports 
-module.exports = { createjob, getjobs, getsinglejob, updateJobById,deleteJobById }
+module.exports = { createjob, getjobs, getsinglejob, updateJobById, deleteJobById }

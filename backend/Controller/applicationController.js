@@ -27,7 +27,26 @@ const applyjob = async (req, res) => {
         application
     })
 }
-module.exports = {
-    applyjob
+
+const updateApplicationStatus = async (req, res) => {
+    const { applicationId } = req.params;
+    const { status } = req.body;
+
+     const application = await Application.findByPk(applicationId);
+
+     if(!application) {
+        return res.status(404).json({
+            message: "Application not found"
+        })
+     }
+
+     // update status
+        application.status = status;
+        await application.save();
+
+        return res.status(200).json({
+            message: "Application status updated successfully",
+            application
+        })
 }
 

@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 
-const {sequelize} = require("../db/dbcomfig"); 
+const { sequelize } = require("../db/dbcomfig");
 
 
 
@@ -26,16 +26,16 @@ const User = sequelize.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    role:{
+    role: {
         type: DataTypes.STRING,
         allowNull: false,
-        enum :['jobseeker','jobprovider'],
+        enum: ['jobseeker', 'jobprovider'],
     }
 }, {
-        timestamps: true,
-        underscored: true,
-       tableName: 'users', // 👈 important
-          
-    },);
+    timestamps: true,
+    underscored: true,
+    tableName: 'users', // 👈 important
+
+},);
 
 module.exports = User;

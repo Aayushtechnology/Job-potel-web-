@@ -14,7 +14,8 @@ Application.belongsTo(User, { foreignKey: "userId" })
 Job.hasMany(Application, { foreignKey: "jobId" })
 Application.belongsTo(Job, { foreignKey: "jobId" })
 
-module.exports = { User, Job,
+module.exports = {
+    User, Job,
     Application
 
- };
+};

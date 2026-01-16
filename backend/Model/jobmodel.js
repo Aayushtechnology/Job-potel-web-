@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
 
-const {sequelize} = require("../db/dbcomfig");
+const { sequelize } = require("../db/dbcomfig");
 
 // define is method 
-const Job = sequelize.define("Job",{
+const Job = sequelize.define("Job", {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,

@@ -1,4 +1,4 @@
-const { Where} = require("sequelize/lib/utils");
+const { Where } = require("sequelize/lib/utils");
 const User = require("../Model/UserModel")
 const bcrypt = require("bcrypt");
 
@@ -7,21 +7,21 @@ const registerUser = async (req, res) => {
 
     // body
     const { username, password, email, role } = req.body;
-console.log(req.body)
+    console.log(req.body)
     if (!username || !password || !email || !role) {
         return res.status(400).json({ message: 'All fields are required' });
     }
-    
 
-// check if user already exists
+
+    // check if user already exists
     const userExists = await User.findOne({ where: { email } });
     if (userExists) {
         return res.status(409).json
             ({ message: 'Email already in use' });
     }
-// password hash 
+    // password hash 
     const hashedPassword = await bcrypt.hash(password, 10);
-// create a User 
+    // create a User 
     const user = await User.create({
         username,
         password: hashedPassword,
@@ -32,7 +32,7 @@ console.log(req.body)
     // Proceed with user registration logic (e.g., save to database)
     res.status(201).json({ message: 'User registered successfully' });
 
-    
+
 }
 
 // login user api 

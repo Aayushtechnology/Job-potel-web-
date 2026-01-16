@@ -1,34 +1,34 @@
-const {DataTypes } = require("sequelize");
-const { sequelize} = require("../db/dbcomfig");
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../db/dbcomfig");
 
 const Application = sequelize.define("Applicationn", {
-    id:{
+    id: {
         type: DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
+        primaryKey: true,
+        autoIncrement: true
     },
-    status : {
+    status: {
         type: DataTypes.ENUM('applied', 'in review', 'rejected', 'accepted'),
         defaultValue: 'applied',
         allowNull: false
 
     },
-    applieAt : {
-        type : DataTypes.DATE,
+    applieAt: {
+        type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         allowNull: false
 
     },
-    userId : {
+    userId: {
         type: DataTypes.UUID,
         allowNull: false
     },
-    jobId : {
+    jobId: {
         type: DataTypes.UUIDR,
         allowNull: false
     }
 
-},{
+}, {
     timestamps: false,
     tableName: "applications"
 })

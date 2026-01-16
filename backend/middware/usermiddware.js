@@ -43,12 +43,12 @@ const checkUserRole = (roles) => {
     return (req, res, next) => {
         const role = req.user.role
 
-        if(!roles.includes(role)){
+        if (!roles.includes(role)) {
             return res.status(402).json({
-                massage : "role mismatch"
+                massage: "role mismatch"
             })
         }
-        else{
+        else {
             next()
         }
     }
